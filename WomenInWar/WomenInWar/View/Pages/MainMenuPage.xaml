@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="WomenInWar.View.Pages.MainMenuPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WomenInWar.View.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="using:WomenInWar.ViewModel.Pages"
+    mc:Ignorable="d">
+    <Page.Background>
+        <ImageBrush
+            ImageSource="../../Resource/Images/MainBackground.png"/>
+    </Page.Background>
+    <Grid>
+        <Grid.DataContext>
+            <pages:MainMenuViewModel/>
+        </Grid.DataContext>
+        <ItemsControl
+            ItemsSource="{Binding CardCharacterPath}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapGrid/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Button/>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </Grid>
+</Page>
