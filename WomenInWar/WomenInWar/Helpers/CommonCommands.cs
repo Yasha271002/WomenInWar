@@ -2,6 +2,7 @@
 using Core;
 using Microsoft.UI.Xaml.Controls;
 using WomenInWar.View.Pages;
+using WomenInWar.ViewModel.Pages;
 
 namespace WomenInWar.Helpers
 {
@@ -12,13 +13,17 @@ namespace WomenInWar.Helpers
             return pageType switch
             {
                PageTypes.MainMenuPage => new MainMenuPage(),
+               PageTypes.CharacterPage => new CharacterPage(),
             };
         }
         private static Page? GetPageByContent(object content)
         {
             var page = content switch
             {
-                
+                MainMenuViewModel mainMenuViewModel => new CharacterPage()
+                {
+                    DataContext = new CharacterViewModel(mainMenuViewModel)
+                },
                 _ => (Page?)null
             };
             return page;

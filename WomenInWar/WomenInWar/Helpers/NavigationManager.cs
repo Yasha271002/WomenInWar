@@ -6,6 +6,7 @@ namespace WomenInWar.Helpers
     public enum PageTypes
     {
         MainMenuPage,
+        CharacterPage,
     }
     public class NavigationManager : ObservableObject
     {

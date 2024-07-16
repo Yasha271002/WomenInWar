@@ -12,6 +12,11 @@
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Resource\Styles\PageBackgroundStyle.xaml" />
+    <None Remove="Resource\Styles\ScrollViewerStyles.xaml" />
+    <None Remove="Resource\Styles\TextStyle.xaml" />
+    <None Remove="Resource\Template\ButtonTemplate.xaml" />
+    <None Remove="Resource\Template\Icons.xaml" />
+    <None Remove="View\Pages\CharacterPage.xaml" />
     <None Remove="View\Pages\MainMenuPage.xaml" />
   </ItemGroup>
 
@@ -24,7 +29,6 @@
 
   <ItemGroup>
     <Folder Include="Resource\CommonBrushes\" />
-    <Folder Include="Resource\Template\" />
     <Folder Include="View\Windows\" />
   </ItemGroup>
 
@@ -32,6 +36,36 @@
     <Reference Include="Core">
       <HintPath>Library\Core.dll</HintPath>
     </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Resource\Styles\ScrollViewerStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Resource\Styles\TextStyle.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Resource\Template\Icons.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Resource\Template\ButtonTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="View\Pages\CharacterPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
 
   <ItemGroup>

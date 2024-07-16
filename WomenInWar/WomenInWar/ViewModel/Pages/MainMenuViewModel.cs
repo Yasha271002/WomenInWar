@@ -1,12 +1,9 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Core;
+using Microsoft.UI.Xaml;
+using WomenInWar.Helpers;
 using WomenInWar.Model;
 
 namespace WomenInWar.ViewModel.Pages
@@ -19,35 +16,49 @@ namespace WomenInWar.ViewModel.Pages
             set => SetAndNotify(value);
         }
 
+        public ObservableCollection<CharacterModel> Assets
+        {
+            get => GetOrCreate<ObservableCollection<CharacterModel>>();
+            set => SetAndNotify(value);
+        }
+
         public MainMenuViewModel()
         {
-            GetCardWomen();
+            CardCharacterPath = new();
+            LoadCharacterContent();
+            //GetCardWomen();
             //const string contentPath = "Content/content.json";
             //if (!File.Exists(contentPath))
             //{
-            //    var defaultValue = JsonConvert.SerializeObject(new List<AssetsModel> { new() });
+            //    var defaultValue = JsonConvert.SerializeObject(new List<CharacterModel> { new() });
             //    File.WriteAllText(contentPath, defaultValue);
             //}
-            //Assets = JsonConvert.DeserializeObject<ObservableCollection<AssetsModel>>(File.ReadAllText(contentPath));
+            //Assets = JsonConvert.DeserializeObject<ObservableCollection<CharacterModel>>(File.ReadAllText(contentPath));
         }
 
-        private void GetCardWomen()
-        {
-            var path = "WomenCard";
-            if (!Directory.Exists(path))
-                Directory.CreateDirectory(path);
+        //private void GetCardWomen()
+        //{
+        //    var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WomenCard");
+        //    if (!Directory.Exists(Path.GetFullPath(path)))
+        //        Directory.CreateDirectory(Path.GetFullPath(path));
 
-            var cardPath = Directory.GetFiles(path);
-            foreach (var card in cardPath)
+        //    var cardPaths = Directory.GetFiles(Path.GetFullPath(path));
+        //    foreach (var cardPath in cardPaths)
+        //        CardCharacterPath.Add(cardPath);
+        //}
+
+       
+
+        private void LoadCharacterContent()
+        {
+            var contentLoader = new ContentLoader();
+            var characters = contentLoader.GetCharacterContent();
+
+            foreach (var character in characters)
             {
-                CardCharacterPath.Add(card);
+                Assets.Add(character);
+                CardCharacterPath.Add(character.CardPath);
             }
-        }
-
-        public ObservableCollection<AssetsModel> Assets
-        {
-            get => GetOrCreate<ObservableCollection<AssetsModel>>();
-            set => SetAndNotify(value);
         }
     }
 }

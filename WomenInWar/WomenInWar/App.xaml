@@ -3,14 +3,20 @@
     x:Class="WomenInWar.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WomenInWar">
+    xmlns:local="using:WomenInWar"
+    xmlns:converters="using:WomenInWar.Helpers.Converters">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <ResourceDictionary Source="Resource/Styles/PageBackgroundStyle.xaml"/>
+                <ResourceDictionary Source="Resource/Styles/TextStyle.xaml"/>
+                <ResourceDictionary Source="Resource/Styles/ScrollViewerStyles.xaml"/>
+                <ResourceDictionary Source="Resource/Template/ButtonTemplate.xaml"/>
+                <ResourceDictionary Source="Resource/Template/Icons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
+            <converters:UriToImageSourceConverter x:Key="UriToImageSourceConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

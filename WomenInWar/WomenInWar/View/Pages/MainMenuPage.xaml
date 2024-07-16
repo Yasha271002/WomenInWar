@@ -9,25 +9,47 @@
     xmlns:pages="using:WomenInWar.ViewModel.Pages"
     mc:Ignorable="d">
     <Page.Background>
-        <ImageBrush
-            ImageSource="../../Resource/Images/MainBackground.png"/>
+        <SolidColorBrush/>
     </Page.Background>
-    <Grid>
-        <Grid.DataContext>
+    <StackPanel>
+        <StackPanel.Background>
+            <ImageBrush
+                ImageSource="../../Resource/Images/MainBackground.png"
+                Opacity="0.8"/>
+        </StackPanel.Background>
+        <StackPanel.DataContext>
             <pages:MainMenuViewModel/>
-        </Grid.DataContext>
+        </StackPanel.DataContext>
+        <Image
+            Source="../../Resource/Images/Title.png"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Left"
+            Margin="0 65 0 77"
+            Width="1285"/>
         <ItemsControl
             ItemsSource="{Binding CardCharacterPath}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
-                    <WrapGrid/>
+                    <WrapGrid
+                        Orientation="Horizontal"
+                        Width="1720"
+                        Height="712"
+                        ItemWidth="260"
+                        ItemHeight="340"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Button/>
+                    <Button
+                        Margin="16">
+                        <Button.Template>
+                            <ControlTemplate>
+                                <Image Source="{Binding  Converter={StaticResource UriToImageSourceConverter}}"/>
+                            </ControlTemplate>
+                        </Button.Template>
+                    </Button>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
-    </Grid>
+    </StackPanel>
 </Page>

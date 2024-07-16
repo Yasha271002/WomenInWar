@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="WomenInWar.View.Pages.CharacterPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WomenInWar.View.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:pages="using:WomenInWar.ViewModel.Pages"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance pages:CharacterViewModel}">
+    <Page.Background>
+        <SolidColorBrush Color="DarkGray"/>
+    </Page.Background>
+    <StackPanel>
+        <StackPanel.Background>
+            <ImageBrush ImageSource="../../Resource/Images/MainBackground.png"/>
+        </StackPanel.Background>
+        <StackPanel
+            Orientation="Horizontal"
+            Margin="0 64 0 69">
+            <Image Source="../../Resource/Images/GrayTittle.png"
+                   VerticalAlignment="Top"
+                   HorizontalAlignment="Left"
+                   Width="650"/>
+            <Button
+                Margin="878 0 0 0"
+                Width="298"
+                Height="86"
+                Template="{StaticResource BackButton}"/>
+        </StackPanel>
+        <Grid>
+            <StackPanel
+                Orientation="Horizontal"
+                Margin="100 0 0 61">
+                <TextBlock
+                    Text="{Binding Name}"/>
+                <TextBlock
+                    Text="{Binding Date}"/>
+                <ScrollViewer
+                    HorizontalAlignment="Left"
+                    Width="990"
+                    Height="580"
+                    Style="{StaticResource CustomScrollViewerStyle}">
+                    <StackPanel>
+                        <TextBlock
+                            FontSize="24"
+                            Width="932"
+                            TextWrapping="Wrap"/>
+                    </StackPanel>
+                </ScrollViewer>
+                <FlipView
+                    Margin="36 0 0 0"
+                    Width="694"
+                    Height="748">
+
+                </FlipView>
+            </StackPanel>
+        </Grid>
+    </StackPanel>
+</Page>
