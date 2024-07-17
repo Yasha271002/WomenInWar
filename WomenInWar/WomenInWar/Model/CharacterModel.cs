@@ -9,11 +9,14 @@ namespace WomenInWar.Model
 {
     public class CharacterModel
     {
+        public CharacterModel()
+        { }
         public string Name { get; set; }
         public string Description { get; set; }
         public string Date { get; set; }
         public List<string> ImagePaths { get; set; }
         public string CardPath { get; set; }
         public string VideoPath { get; set; }
+        public CharacterModel RelatedCharacterModel { get; set; }
     }
 }

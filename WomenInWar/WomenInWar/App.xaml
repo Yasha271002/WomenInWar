@@ -16,6 +16,7 @@
                 <ResourceDictionary Source="Resource/Template/Icons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
+            <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
             <converters:UriToImageSourceConverter x:Key="UriToImageSourceConverter"/>
         </ResourceDictionary>
     </Application.Resources>

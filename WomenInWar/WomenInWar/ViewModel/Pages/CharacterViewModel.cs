@@ -5,18 +5,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core;
+using WomenInWar.Model;
 
 namespace WomenInWar.ViewModel.Pages
 {
     public class CharacterViewModel : ObservableObject
     {
-        public ObservableCollection<MainMenuViewModel> MainCharacterModel
+        public CharacterModel CharacterModel
         {
-            get => GetOrCreate<ObservableCollection<MainMenuViewModel>>();
+            get => GetOrCreate<CharacterModel>();
             set => SetAndNotify(value);
         }
-        public CharacterViewModel(MainMenuViewModel mwViewModel)
+        public CharacterViewModel(CharacterModel character)
         {
+            CharacterModel = character;
         }
+        public CharacterViewModel() { }
     }
 }

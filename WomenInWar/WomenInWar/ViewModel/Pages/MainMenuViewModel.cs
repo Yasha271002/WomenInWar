@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.IO;
 using Core;
 using Microsoft.UI.Xaml;
@@ -10,11 +11,11 @@ namespace WomenInWar.ViewModel.Pages
 {
     public class MainMenuViewModel : ObservableObject
     {
-        public ObservableCollection<string> CardCharacterPath
-        {
-            get => GetOrCreate<ObservableCollection<string>>();
-            set => SetAndNotify(value);
-        }
+        //public ObservableCollection<string> CardCharacterPath
+        //{
+        //    get => GetOrCreate<ObservableCollection<string>>();
+        //    set => SetAndNotify(value);
+        //}
 
         public ObservableCollection<CharacterModel> Assets
         {
@@ -24,7 +25,8 @@ namespace WomenInWar.ViewModel.Pages
 
         public MainMenuViewModel()
         {
-            CardCharacterPath = new();
+            Assets = new();
+            //CardCharacterPath = new();
             LoadCharacterContent();
             //GetCardWomen();
             //const string contentPath = "Content/content.json";
@@ -57,7 +59,7 @@ namespace WomenInWar.ViewModel.Pages
             foreach (var character in characters)
             {
                 Assets.Add(character);
-                CardCharacterPath.Add(character.CardPath);
+                //CardCharacterPath.Add(character.CardPath);
             }
         }
     }

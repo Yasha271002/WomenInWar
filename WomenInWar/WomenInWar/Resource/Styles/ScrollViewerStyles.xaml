@@ -18,11 +18,6 @@
 
                         <ScrollContentPresenter Grid.Row="0" Grid.Column="0"/>
 
-                        <ScrollBar x:Name="HorizontalScrollBar" Orientation="Horizontal" Grid.Row="1" Grid.Column="0"
-                                   Maximum="{TemplateBinding ScrollableWidth}"
-                                   ViewportSize="{TemplateBinding ViewportWidth}"
-                                   Value="{TemplateBinding HorizontalOffset}"/>
-
                         <ScrollBar x:Name="VerticalScrollBar" Orientation="Vertical" Grid.Row="0" Grid.Column="1"
                                    Maximum="{TemplateBinding ScrollableHeight}"
                                    ViewportSize="{TemplateBinding ViewportHeight}"

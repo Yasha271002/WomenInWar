@@ -7,6 +7,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="using:WomenInWar.ViewModel.Pages"
+    xmlns:helpers="using:WomenInWar.Helpers"
+    xmlns:model="using:WomenInWar.Model"
     mc:Ignorable="d">
     <Page.Background>
         <SolidColorBrush/>
@@ -27,7 +29,8 @@
             Margin="0 65 0 77"
             Width="1285"/>
         <ItemsControl
-            ItemsSource="{Binding CardCharacterPath}">
+            Name="ItemsControl"
+            ItemsSource="{Binding Assets}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
                     <WrapGrid
@@ -39,12 +42,15 @@
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
-                <DataTemplate>
+                <DataTemplate
+                    x:DataType="model:CharacterModel">
                     <Button
+                        Command="{x:Bind helpers:CommonCommands.NavigateCommand}"
+                        CommandParameter="{Binding }"
                         Margin="16">
                         <Button.Template>
                             <ControlTemplate>
-                                <Image Source="{Binding  Converter={StaticResource UriToImageSourceConverter}}"/>
+                                <Image Source="{Binding CardPath,Converter={StaticResource UriToImageSourceConverter}}"/>
                             </ControlTemplate>
                         </Button.Template>
                     </Button>

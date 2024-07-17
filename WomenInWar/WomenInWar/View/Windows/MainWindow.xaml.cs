@@ -1,5 +1,8 @@
 using ABI.Microsoft.UI.Xaml.Controls;
+using Microsoft.UI;
+using Microsoft.UI.Windowing;
 using Microsoft.UI.Xaml;
+using System;
 using WomenInWar.Helpers;
 using WomenInWar.View.Pages;
 
@@ -16,8 +19,18 @@ namespace WomenInWar.View.Windows
         public MainWindow()
         {
             this.InitializeComponent();
+            var m_appWindow = GetAppWindowForCurrentWindow();
+            m_appWindow.SetPresenter(AppWindowPresenterKind.FullScreen);
             NavigationManager.Instance.MainFrame = MainFrame;
             CommonCommands.NavigateCommand.Execute(PageTypes.MainMenuPage);
+        }
+
+        private AppWindow GetAppWindowForCurrentWindow()
+        {
+            IntPtr hWnd = WinRT.Interop.WindowNative.GetWindowHandle(this);
+            WindowId myWndId = Microsoft.UI.Win32Interop.GetWindowIdFromWindow(hWnd);
+
+            return AppWindow.GetFromWindowId(myWndId);
         }
     }
 }

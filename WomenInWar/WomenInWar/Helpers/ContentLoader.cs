@@ -29,7 +29,6 @@ namespace WomenInWar.Helpers
 
         private CharacterModel GetCharacter(string directoryPath)
         {
-
             var jsonFilePath = GetFileByExtension(directoryPath, ".json");
             var characterJson = File.ReadAllText(jsonFilePath);
             var character = JsonConvert.DeserializeObject<CharacterModel>(characterJson);
@@ -40,6 +39,11 @@ namespace WomenInWar.Helpers
 
             character.CardPath = GetFileByExtension(directoryPath, ".png");
             character.VideoPath = GetFileByExtension(directoryPath, ".mp4");
+
+            var relatedCharacterPath = Directory.GetDirectories(directoryPath).FirstOrDefault((d) => d != imagePath);
+            if (relatedCharacterPath is not null)
+                character.RelatedCharacterModel = GetCharacter(relatedCharacterPath);
+
             return character;
         }
 

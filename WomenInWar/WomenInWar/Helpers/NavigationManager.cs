@@ -10,7 +10,7 @@ namespace WomenInWar.Helpers
     }
     public class NavigationManager : ObservableObject
     {
-        public static NavigationManager Instance { get; } = new NavigationManager();
+        public static NavigationManager Instance { get; } = new  NavigationManager();
 
         public Frame MainFrame
         {
