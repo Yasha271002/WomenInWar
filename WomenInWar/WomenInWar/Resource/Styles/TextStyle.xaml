@@ -9,4 +9,21 @@
         <Setter Property="TextAlignment" Value="Center"/>
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
+
+    <Style x:Key="CharacterNameStyle" TargetType="TextBlock" BasedOn="{StaticResource TitleTextStyle}">
+        <Setter Property="FontSize" Value="56"/>
+        <Setter Property="Foreground" Value="#E22021"/>
+        <Setter Property="HorizontalAlignment" Value="Left"/>
+    </Style>
+
+    <Style x:Key="CharacterDateStyle" TargetType="TextBlock" BasedOn="{StaticResource TitleTextStyle}">
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Foreground" Value="#6A6A6A"/>
+    </Style>
+
+    <Style x:Key="CharacterDescriptionStyle" TargetType="TextBlock" BasedOn="{StaticResource TitleTextStyle}">
+        <Setter Property="FontSize" Value="24"/>
+        <Setter Property="FontWeight" Value="Normal"/>
+        <Setter Property="Foreground" Value="#1D1D1D"/>
+    </Style>
 </ResourceDictionary>

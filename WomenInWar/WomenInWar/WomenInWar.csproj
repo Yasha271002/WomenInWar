@@ -11,25 +11,28 @@
     <UseWinUI>true</UseWinUI>
   </PropertyGroup>
   <ItemGroup>
-    <None Remove="Resource\Styles\PageBackgroundStyle.xaml" />
-    <None Remove="Resource\Styles\ScrollViewerStyles.xaml" />
+    <None Remove="Resource\Styles\BorderStyle.xaml" />
+    <None Remove="Resource\Styles\FlipViewStyle.xaml" />
     <None Remove="Resource\Styles\TextStyle.xaml" />
     <None Remove="Resource\Template\ButtonTemplate.xaml" />
     <None Remove="Resource\Template\Icons.xaml" />
     <None Remove="View\Pages\CharacterPage.xaml" />
+    <None Remove="View\Pages\Control\FlipViewControl.xaml" />
+    <None Remove="View\Pages\InactivityPage.xaml" />
     <None Remove="View\Pages\MainMenuPage.xaml" />
+    <None Remove="View\Windows\VideoWindow.xaml" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22621.756" />
     <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.5.240627000" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.WinUI.Managed" Version="2.0.9" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <Manifest Include="$(ApplicationManifest)" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Resource\CommonBrushes\" />
-    <Folder Include="View\Windows\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,7 +42,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Resource\Styles\ScrollViewerStyles.xaml">
+    <Page Update="View\Pages\Control\FlipViewControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="View\Pages\InactivityPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="View\Windows\VideoWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Resource\Styles\FlipViewStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
@@ -69,7 +90,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Page Update="Resource\Styles\PageBackgroundStyle.xaml">
+    <Page Update="Resource\Styles\BorderStyle.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>

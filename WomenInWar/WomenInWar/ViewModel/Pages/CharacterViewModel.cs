@@ -20,6 +20,7 @@ namespace WomenInWar.ViewModel.Pages
         {
             CharacterModel = character;
         }
+
         public CharacterViewModel() { }
     }
 }

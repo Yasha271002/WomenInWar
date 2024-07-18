@@ -9,7 +9,8 @@
     xmlns:pages="using:WomenInWar.ViewModel.Pages"
     xmlns:helpers="using:WomenInWar.Helpers"
     xmlns:model="using:WomenInWar.Model"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    NavigationCacheMode="Enabled">
     <Page.Background>
         <SolidColorBrush/>
     </Page.Background>

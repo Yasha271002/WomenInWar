@@ -9,15 +9,17 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
-                <ResourceDictionary Source="Resource/Styles/PageBackgroundStyle.xaml"/>
+                <ResourceDictionary Source="Resource/Styles/BorderStyle.xaml"/>
                 <ResourceDictionary Source="Resource/Styles/TextStyle.xaml"/>
-                <ResourceDictionary Source="Resource/Styles/ScrollViewerStyles.xaml"/>
+                <ResourceDictionary Source="Resource/Styles/FlipViewStyle.xaml"/>
                 <ResourceDictionary Source="Resource/Template/ButtonTemplate.xaml"/>
                 <ResourceDictionary Source="Resource/Template/Icons.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <!-- Other app resources here -->
+            <converters:BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
             <converters:NullToVisibilityConverter x:Key="NullToVisibilityConverter"/>
             <converters:UriToImageSourceConverter x:Key="UriToImageSourceConverter"/>
+            <converters:UriToVideoSourceConverter x:Key="UriToVideoSourceConverter"/>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

@@ -8,13 +8,19 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:pages="using:WomenInWar.ViewModel.Pages"
     xmlns:helpers="using:WomenInWar.Helpers"
-    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
-    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:control="using:WomenInWar.View.Pages.Control"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance pages:CharacterViewModel}">
     <Page.Background>
         <SolidColorBrush Color="DarkGray"/>
     </Page.Background>
+    <Page.Resources>
+        <DataTemplate x:Key="ImageTemplate">
+            <Image Source="{Binding Converter={StaticResource UriToImageSourceConverter}}"
+                   Stretch="Uniform"
+                   Margin="24"/>
+        </DataTemplate>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -57,7 +63,7 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
             <Grid
-                Width="990">
+                Width="1000">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="Auto"/>
@@ -65,44 +71,57 @@
                     <RowDefinition Height="Auto"/>
                 </Grid.RowDefinitions>
                 <TextBlock Grid.Row="0"
-                            Text="{Binding CharacterModel.Name, Mode=OneWay}"/>
-                <TextBlock Grid.Row="1"
+                           Style="{StaticResource CharacterNameStyle}"
+                            Text="{Binding CharacterModel.Name, Mode=OneWay}"
+                           Margin="0 0 0 8"/>
+                <Grid Grid.Row="1"
+                      HorizontalAlignment="Left"
+                      Visibility="{Binding CharacterModel.Date, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    <Border
+                        Style="{StaticResource CharacterBorderDateStyle}"
+                        Padding="40 16"
+                        HorizontalAlignment="Left">
+                        <TextBlock
+                            x:Name="DateText"
+                            Style="{StaticResource CharacterDateStyle}"
                             Text="{Binding CharacterModel.Date, Mode=OneWay}"/>
+                    </Border>
+                </Grid>
                 <ScrollViewer Grid.Row="2"
                             HorizontalAlignment="Left"
-                            VerticalScrollBarVisibility="Auto">
+                            VerticalScrollBarVisibility="Auto"
+                            VerticalAlignment="Top"
+                            Margin="0 56 0 0">
                     <TextBlock
                         Margin="0 0 48 0"
                         FontSize="24"
                         Width="932"
                         TextWrapping="Wrap"
+                        TextAlignment="Left"
+                        Style="{StaticResource CharacterDescriptionStyle}"
                         Text="{Binding CharacterModel.Description}"/>
                 </ScrollViewer>
                 <Button Grid.Row="3"
-                        Background="Red"
+                        Background="#E22021"
                         Width="719"
                         Margin="0 40 0 0"
                         Padding="64 24"
-                        CornerRadius="43"
+                        CornerRadius="44"
+                        FontSize="32"
                         Visibility="{Binding CharacterModel.RelatedCharacterModel, Converter={StaticResource NullToVisibilityConverter}}"
                         Content="{Binding CharacterModel.RelatedCharacterModel.Name}"
                         Command="{x:Bind helpers:CommonCommands.NavigateCommand}"
                         CommandParameter="{Binding CharacterModel.RelatedCharacterModel}">
                 </Button>
             </Grid>
-            <FlipView Grid.Column="1"
-                    Margin="36 0 0 0"
-                    Width="694"
-                    Height="748"
-                    ItemsSource="{Binding CharacterModel.ImagePaths}"
-                    Background="Transparent">
-                <FlipView.ItemTemplate>
-                    <DataTemplate>
-                        <Image Source="{Binding Converter={StaticResource UriToImageSourceConverter}}"
-                                   Stretch="Uniform"/>
-                    </DataTemplate>
-                </FlipView.ItemTemplate>
-            </FlipView>
+            <control:FlipViewControl Grid.Column="1"
+                                     Width="694"
+                                     Height="748"
+                                     ItemsSource="{Binding CharacterModel.ImagePaths}"
+                                     ItemTemplate="{StaticResource ImageTemplate}"
+                                     Background="Transparent">
+
+            </control:FlipViewControl>
         </Grid>
     </Grid>
 </Page>

@@ -10,9 +10,21 @@ using WomenInWar.Model;
 
 namespace WomenInWar.Helpers
 {
-    public class ContentLoader
+    public static class ContentLoader
     {
-        public List<CharacterModel> GetCharacterContent()
+        private static List<CharacterModel> characters;
+
+        public static void LoadCharacters()
+        {
+            characters = GetCharacterContent();
+        }
+
+        public static List<CharacterModel> GetCharacters()
+        {
+            return characters; 
+        }
+
+        public static List<CharacterModel> GetCharacterContent()
         {
             var path = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "WomenCard");
             var directories = Directory.GetDirectories(path);
@@ -27,7 +39,7 @@ namespace WomenInWar.Helpers
             return characterModels;
         }
 
-        private CharacterModel GetCharacter(string directoryPath)
+        private static CharacterModel GetCharacter(string directoryPath)
         {
             var jsonFilePath = GetFileByExtension(directoryPath, ".json");
             var characterJson = File.ReadAllText(jsonFilePath);
@@ -47,7 +59,7 @@ namespace WomenInWar.Helpers
             return character;
         }
 
-        private string GetFileByExtension(string directoryPath, string extension)
+        private static string GetFileByExtension(string directoryPath, string extension)
         {
             return Directory.GetFiles(directoryPath).FirstOrDefault(f => Path.GetExtension(f) == extension);
         }

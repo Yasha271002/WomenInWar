@@ -1,14 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:WomenInWar.Resource.Template">
-        <DataTemplate
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <DataTemplate
             x:Key="BackIcon">
-            <Viewbox>
-                <Grid>
-                    <Path Data="M0 18.6L21.4375 31V21.7H49V0L39.8125 6.2V12.4H21.4375V3.1L0 18.6Z" Fill="#F8F8F8"/>
-                </Grid>
-            </Viewbox>
-        </DataTemplate>
+        <Viewbox>
+            <Grid>
+                <Path Data="M0 18.6L21.4375 31V21.7H49V0L39.8125 6.2V12.4H21.4375V3.1L0 18.6Z" Fill="#F8F8F8"/>
+            </Grid>
+        </Viewbox>
+    </DataTemplate>
+    <DataTemplate
+            x:Key="InactivityIcon">
+        <Viewbox>
+            <Grid>
+                <Path Data="M16.0764 0.320312C10.458 0.320312 5.89205 4.87026 5.89205 10.4689H9.28683C9.28683 6.73083 12.3252 3.70317 16.0764 3.70317C19.8276 3.70317 22.866 6.73083 22.866 10.4689H26.2607C26.2607 4.87026 21.6948 0.320312 16.0764 0.320312ZM29.6555 47.6803H22.1191C20.4217 47.6803 18.7752 47.0376 17.5192 45.8874L1.90318 31.5779C0.511318 30.3093 0.426448 28.1781 1.68252 26.7912C1.81831 26.6559 1.9541 26.5205 2.10687 26.4021C3.48175 25.4042 5.38283 25.5226 6.62193 26.6897L12.6816 32.2037V10.4689C12.6816 8.60831 14.2093 7.08603 16.0764 7.08603C17.9435 7.08603 19.4712 8.60831 19.4712 10.4689V22.3089C19.4712 20.4483 20.9988 18.926 22.866 18.926C24.7331 18.926 26.2607 20.4483 26.2607 22.3089V24.0003C26.2607 22.1397 27.7884 20.6175 29.6555 20.6175C31.5227 20.6175 33.0503 22.1397 33.0503 24.0003V25.6917C33.0503 23.8312 34.578 22.3089 36.4451 22.3089C38.3122 22.3089 39.8399 23.8312 39.8399 25.6917V37.5317C39.8399 43.1304 35.2739 47.6803 29.6555 47.6803Z" Fill="white"/>
+            </Grid>
+        </Viewbox>
+    </DataTemplate>
+    <DataTemplate
+            x:Key="UserControlButtons">
+        <Viewbox>
+            <Grid>
+                <Path Data="M1.5 2L9.75596 11.125C10.4577 11.9006 10.4433 13.086 9.72289 13.8443L1.5 22.5" Stroke="white" StrokeThickness="3" StrokeLineJoin="round"/>
+            </Grid>
+        </Viewbox>
+    </DataTemplate>
 </ResourceDictionary>

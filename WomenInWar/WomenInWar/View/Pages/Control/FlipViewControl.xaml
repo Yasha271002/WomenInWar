@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<UserControl
+    x:Class="WomenInWar.View.Pages.Control.FlipViewControl"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:WomenInWar.View.Pages.Control"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <UserControl.Resources>
+        <Style x:Key="FlipViewNavigationButtonStyle" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="Padding" Value="10"/>
+            <Setter Property="Margin" Value="0,0,0,0"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+        <Style x:Key="CustomFlipViewStyle" TargetType="FlipView">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="FlipView">
+                        <Grid Background="{TemplateBinding Background}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" CornerRadius="{TemplateBinding CornerRadius}">
+                            <ScrollViewer x:Name="ScrollingHost" VerticalSnapPointsType="MandatorySingle" HorizontalSnapPointsType="MandatorySingle" HorizontalScrollMode="{TemplateBinding ScrollViewer.HorizontalScrollMode}" HorizontalScrollBarVisibility="{TemplateBinding ScrollViewer.HorizontalScrollBarVisibility}" VerticalScrollMode="{TemplateBinding ScrollViewer.VerticalScrollMode}" VerticalScrollBarVisibility="{TemplateBinding ScrollViewer.VerticalScrollBarVisibility}" IsHorizontalRailEnabled="{TemplateBinding ScrollViewer.IsHorizontalRailEnabled}" IsVerticalRailEnabled="{TemplateBinding ScrollViewer.IsVerticalRailEnabled}" IsHorizontalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsHorizontalScrollChainingEnabled}" IsVerticalScrollChainingEnabled="{TemplateBinding ScrollViewer.IsVerticalScrollChainingEnabled}" IsDeferredScrollingEnabled="{TemplateBinding ScrollViewer.IsDeferredScrollingEnabled}" BringIntoViewOnFocusChange="{TemplateBinding ScrollViewer.BringIntoViewOnFocusChange}" Padding="{TemplateBinding Padding}" ZoomMode="Disabled" TabNavigation="{TemplateBinding TabNavigation}" IsTabStop="False" AutomationProperties.AccessibilityView="Raw">
+                                <ItemsPresenter />
+                            </ScrollViewer>
+                        </Grid>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+        </Grid.ColumnDefinitions>
+
+        <Button x:Name="PreviousButton"
+                Style="{StaticResource FlipViewNavigationButtonStyle}"
+                Grid.Column="0"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Left"
+                Click="PreviousButton_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border
+                        Background="#6A6A6A"
+                        Width="50"
+                        Height="50"
+                        CornerRadius="32">
+                        <ContentPresenter
+                            Width="9.5"
+                            ContentTemplate="{StaticResource UserControlButtons}"
+                            RenderTransformOrigin="0.5 0.5">
+                            <ContentPresenter.RenderTransform>
+                                <RotateTransform Angle="180"/>
+                            </ContentPresenter.RenderTransform>
+                        </ContentPresenter>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <FlipView x:Name="FlipView"
+                  Grid.Column="1"
+                  Background="Transparent"
+                  HorizontalAlignment="Stretch"
+                  VerticalAlignment="Stretch"
+                  Style="{StaticResource CustomFlipViewStyle}"
+                  ItemsSource="{x:Bind ItemsSource, Mode=OneWay}"
+                  ItemTemplate="{x:Bind ItemTemplate, Mode=OneWay}"
+                  Margin="24 0 24 0">
+            <FlipView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </FlipView.ItemsPanel>
+        </FlipView>
+
+        <Button x:Name="NextButton"
+                Style="{StaticResource FlipViewNavigationButtonStyle}"
+                FontFamily="Segoe MDL2 Assets"
+                Grid.Column="2"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Right"
+                Click="NextButton_Click">
+            <Button.Template>
+                <ControlTemplate>
+                    <Border
+                        Background="#6A6A6A"
+                        Width="50"
+                        Height="50"
+                        CornerRadius="32">
+                        <ContentPresenter
+                            Width="9.5"
+                            ContentTemplate="{StaticResource UserControlButtons}"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
+</UserControl>

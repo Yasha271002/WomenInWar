@@ -15,6 +15,7 @@ namespace WomenInWar.Helpers
             return pageType switch
             {
                PageTypes.MainMenuPage => typeof(MainMenuPage),
+               PageTypes.InactivityPage => typeof(InactivityPage),
             };
         }
         private static Type? GetPageByContent(object content)

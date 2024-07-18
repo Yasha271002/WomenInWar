@@ -6,10 +6,37 @@
     xmlns:local="using:WomenInWar"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:interactivity="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d">
-    <Frame
-        x:Name="MainFrame"
-        Width="1920"
-        Height="1080"/>
-    
+    <Grid>
+        <Frame
+            x:Name="MainFrame"
+            Width="1920"
+            Height="1080"/>
+        <Button 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Bottom">
+            <interactivity:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="PreviewMouseDown">
+                    <core:InvokeCommandAction Command="{Binding StartTimerCommand}"/>
+                </core:EventTriggerBehavior>
+                <core:EventTriggerBehavior EventName="PreviewMouseUp">
+                    <core:InvokeCommandAction Command="{Binding StopTimerCommand}"/>
+                </core:EventTriggerBehavior>
+            </interactivity:Interaction.Behaviors>
+            <Button.Style>
+                <Style TargetType="Button">
+
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate>
+                    <Border Width="100" Height="100" Background="Transparent">
+
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+    </Grid>
 </Window>
